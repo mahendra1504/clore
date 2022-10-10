@@ -10,6 +10,7 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Contact from './Components/Contact/Contact';
 import CartPage from './Components/Cart/CartPage';
+import AccountPage from './Components/Account/AccountPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,8 +19,8 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="/About" element={<AboutUs></AboutUs>} />
       <Route path ="/Login" element={<Login></Login>} />
+      <Route path ="/Account" element={<AccountPage></AccountPage>} />
       <Route path ="/Cart" element={<CartPage></CartPage>} />
-      
       <Route path="/Register" element={<Register></Register>}/>
       <Route path ="/Contact" element={<Contact></Contact>}/>
     </Routes>
