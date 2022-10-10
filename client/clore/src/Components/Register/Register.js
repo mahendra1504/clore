@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 import {BsEyeFill,BsEyeSlashFill} from 'react-icons/bs'
 import "../../CSS/mix.css";
+// import Toast from '../UI/toast';
 
 const Register = () => {
   const [showPass,setShowPass] = useState(false)
   const [cshowpass,setCShowPass] = useState(false)
-
+  const navigate=useNavigate();
+  // const [toastFlag,setToastFlag] = useState(true)
   const [fname,setFname] = useState("")
   const [lname,setLname] = useState("")
   const [phone,setPhone] = useState("")
@@ -16,9 +18,8 @@ const Register = () => {
 
 
   const addUserdata  = async (e) =>{
-    e.preventDefault();
     
-
+    e.preventDefault();
     if(fname===''){
       alert("Enter Name")
     }else if (email ===''){
@@ -57,14 +58,16 @@ const Register = () => {
     console.log(res.status);
 
     if(res.status === 'ok'){
-      alert("User Registered Successfully");
-     
+      // alert("Account Successfully Registered ");
+      
       setFname("")
       setLname("")
       setPhone("")
       setEmail("")
       setPassword("")
       setCpassword("")
+      navigate('/Login')
+
     }
   
 
@@ -72,7 +75,7 @@ const Register = () => {
     }
   }
   return (
-    <>
+  
     <section>
       <div className='form_data'>
         <div className='form_heading'>
@@ -150,8 +153,8 @@ const Register = () => {
           <p>Already have an Account?  <NavLink to={"/Login"}>Log In</NavLink></p>
         </form>
       </div>
+      
     </section>
-    </>
   )
 }
 
