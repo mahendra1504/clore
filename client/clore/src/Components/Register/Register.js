@@ -58,7 +58,7 @@ const Register = () => {
 
     if(res.status === 'ok'){
       alert("User Registered Successfully");
-     
+      window.location.href = '/Login'
       setFname("")
       setLname("")
       setPhone("")

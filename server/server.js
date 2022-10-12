@@ -4,6 +4,11 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const User = require('./models/user.models')
 const app = express();
+const bcrypt = require("bcryptjs")
+const productdb = require('./models/product.models');
+const categorydb = require('./models/category.models');
+const subcategorydb = require('./models/sub_category.models');
+const branddb = require('./models/brand.models');
 app.use(cors());
 app.use(express.json())
 
@@ -55,6 +60,45 @@ app.post('/api/login', async (req, res) => {
     
     return res.json({status : 'ok'});
     
+})
+
+app.post('/api/addproduct', async (req, res) => {
+    console.log(req.body);
+    //const { product_name, category_id, sub_category_id, brand_id, price, small_desc, long_desc, image1, color, size, qty} = req.body
+    try {
+        const addProduct = await productdb.create({
+            product_name : req.body.product_name,
+            category_id : req.body.category_id,
+            sub_category_id : req.body.sub_category_id,
+            brand_id : req.body.brand_id,
+            price : req.body.price,
+            small_desc : req.body.small_desc,
+            long_desc : req.body.long_desc,
+            image1 : req.body.image1,
+            //image2 : {type : String, required : true},
+            //image3 : {type : String, required : true},
+            //image4 : {type : String, required : true},
+            color : req.body.color,
+            qty : req.body.qty,
+            size : req.body.size
+        })
+        console.log()
+        res.status(201).json(addProduct)
+    } 
+    catch (err) {
+        console.log(err)
+        res.status(422).json("Error Found")
+    }
+})
+
+app.get("/api/getproduct", async (req, res) => {
+    try {
+        const productdata = await productdb.find().populate('category_id sub_category_id brand_id');
+        res.status(201).json(productdata)
+        // console.log(userdata);
+    } catch (error) {
+        res.status(422).json(error);
+    }
 })
 
 app.listen(1337, ()=>{

@@ -37,7 +37,7 @@ const NavbarBoots = () => {
                                 <NavLink className="nav-link text-dark mx-2" to={"About"}><a >About</a></NavLink>
                             </li>
                             <li className="nav-item mt-2">
-                                <a className="nav-link text-dark mx-2" href="#">Shop</a>
+                                <a className="nav-link text-dark mx-2" href="/Shop">Shop</a>
                             </li>
                             <li className="nav-item mb-2">
                                 <NavLink className="nav-link" to={"/"}><img src={pic} height={40} width={80} /></NavLink>
