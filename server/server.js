@@ -44,7 +44,7 @@ app.post('/api/login', async (req, res) => {
     
     if(user) {
         const token = jwt.sign({
-            name : user.name,
+            // name : user.name,
             email : user.email,
         }, 'secret123') 
 

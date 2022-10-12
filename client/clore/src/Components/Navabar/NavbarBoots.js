@@ -44,7 +44,7 @@ const NavbarBoots = () => {
                                 </li>
                                 <li className="nav-item mt-2">
                                     {/* <a className="nav-link text-dark" onClick={()=>navigater("About")} >About</a> */}
-                                    <NavLink className="nav-link text-dark mx-2" to={"About"}><a >About</a></NavLink>
+                                    <NavLink className="nav-link text-dark mx-2" to={"/About"}><a >About</a></NavLink>
                                 </li>
                                 <li className="nav-item mt-2">
                                     <a className="nav-link text-dark mx-2" href="#">Shop</a>
