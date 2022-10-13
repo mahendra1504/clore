@@ -9,6 +9,7 @@ import Login from './Components/Login/Login';
 import ShopPage from './Components/Shop/ShopPage';
 import Register from './Components/Register/Register';
 import Contact from './Components/Contact/Contact';
+import AddProduct from './Components/Admin/AddProduct';
 import CartPage from './Components/Cart/CartPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,6 +20,7 @@ root.render(
       <Route path="/About" element={<AboutUs></AboutUs>} />
       <Route path ="/Login" element={<Login></Login>} />
       <Route path ="/Cart" element={<CartPage></CartPage>} />
+      <Route path ="/AddProduct" element={<AddProduct />} />
       <Route path ="/Shop" element={<ShopPage />} />
       <Route path="/Register" element={<Register></Register>}/>
       <Route path ="/Contact" element={<Contact></Contact>}/>

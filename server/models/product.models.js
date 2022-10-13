@@ -22,7 +22,7 @@ const Product = new mongoose.Schema(
         },
         small_desc : {type: String, required : true},
         long_desc : {type : String, required : true},
-        image1 : {type : String, required : true},
+        image1 : {type : String},
         //image2 : {type : String, required : true},
         //image3 : {type : String, required : true},
         //image4 : {type : String, required : true},
