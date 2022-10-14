@@ -5,12 +5,15 @@ const mongoose = require("mongoose")
 const User = require('./models/user.models')
 const app = express();
 const bcrypt = require("bcryptjs")
+<<<<<<< Updated upstream
 const productdb = require('./models/product.models');
 const categorydb = require('./models/category.models');
 const subcategorydb = require('./models/sub_category.models');
 const branddb = require('./models/brand.models');
 const multer = require('multer')
 const fs = require('fs')
+=======
+>>>>>>> Stashed changes
 app.use(cors());
 app.use(express.json())
 
