@@ -6,9 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import AboutUs from './Components/Aboutus/AboutUs';
 import Login from './Components/Login/Login';
-
+import ShopPage from './Components/Shop/ShopPage';
 import Register from './Components/Register/Register';
 import Contact from './Components/Contact/Contact';
+import AddProduct from './Components/Admin/AddProduct';
 import CartPage from './Components/Cart/CartPage';
 import AccountPage from './Components/Account/AccountPage';
 
@@ -21,6 +22,11 @@ root.render(
       <Route path ="/Login" element={<Login></Login>} />
       <Route path ="/Account" element={<AccountPage></AccountPage>} />
       <Route path ="/Cart" element={<CartPage></CartPage>} />
+<<<<<<< HEAD
+=======
+      <Route path ="/AddProduct" element={<AddProduct />} />
+      <Route path ="/Shop" element={<ShopPage />} />
+>>>>>>> mahendra
       <Route path="/Register" element={<Register></Register>}/>
       <Route path ="/Contact" element={<Contact></Contact>}/>
     </Routes>
