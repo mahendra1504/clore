@@ -24,8 +24,15 @@ var storage = multer.diskStorage({
         if(!fs.existsSync(dir)){
             fs.mkdirSync(dir);
         }
+        callback(null, dir);
+    },
+
+    filename : function(req, file, callback){
+        callback(null, file.originalname);
     }
-})
+});
+
+var uploadImage = multer({storage : storage}).array('product_image',4);
 
 app.post('/api/register', async (req, res) => {
     console.log(req.body);
