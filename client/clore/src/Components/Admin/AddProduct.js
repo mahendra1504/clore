@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from "axios"
 
 const AddProduct = () => {
   const [list, setList] = useState([])
@@ -11,6 +12,7 @@ const AddProduct = () => {
   const [small_desc,setSmallDesc] = useState("")
   const [long_desc,setLongDesc] = useState("")
   const [qty,setQty] = useState("")
+  const [images,setImages] = useState("")
   const [brand_id,setBrand] = useState("")
   const [category_id,setCategory] = useState("")
   const [sub_category_id,setSubCategory] = useState("")
@@ -74,65 +76,38 @@ const AddProduct = () => {
         getSubCategory()
     }, [])
 
+    const addProductHandler = async (e) => {
+      e.preventDefault();
+      //console.log(bname);
 
-  const addUserdata  = async (e) =>{
-    e.preventDefault();
-    console.log(pname);
-    console.log(price);
-    console.log(color);
-    console.log(size);
-    console.log(qty);
-    console.log(small_desc);
-    console.log(long_desc);
-    console.log(category_id);
-    console.log(sub_category_id);
-    console.log(brand_id);
-
-    if(pname===''){
-      alert("Enter Name")
-    }else if (price ===''){
-      alert("Enter Email")
-    }else if(color===''){
-      alert("Enter Valid Email")
-    }else if(qty===''){
-      alert("Enter your password")
-    }else if(size===''){
-      alert("Size")
-    }else if(small_desc===''){
-      alert("small_desc")
-    }else if(long_desc===''){
-      alert("long_desc")
-    }else{     
-      const data = await fetch("http://localhost:1337/api/addproduct", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            pname,
-            price,
-            color,
-            size,
-            qty,
-            small_desc,
-            long_desc,
-            category_id,
-            brand_id,
-            sub_category_id,
-        })
-    });
-
-    const res = await data.json();
-    console.log(res.status);
-
-    if(res.status === 'ok'){
-      alert("Product Added Successfully");
-      
-    }
-  
+      var formData = new FormData();
+      formData.append("images", images)
+      formData.append("pname", pname)
+      formData.append("price", price)
+      formData.append("qty", qty)
+      formData.append("color", color)
+      formData.append("size", size)
+      formData.append("small_desc", small_desc)
+      formData.append("long_desc", long_desc)
+      formData.append("brand_id", brand_id)
+      formData.append("category_id", category_id)
+      formData.append("sub_category_id", sub_category_id)
 
 
-    }
+      const config = {
+          headers: {
+              "Content-Type": "multipart/form-data"
+          }
+      }
+
+      const res = await axios.post("http://localhost:1337/api/addproduct", formData, config);
+      if (res.data.status === 401 || !res.data) {
+          console.log("errror")
+      } else {
+          alert("Product Added Successfully")
+      }
+
+
   }
   return (
     <>
@@ -231,7 +206,8 @@ const AddProduct = () => {
               <input 
               type="file"
               name="images"
-              placeholder='Select Product Images' />       
+              onChange={(e) => setImages(e.target.files)}
+              placeholder='Select Product Images' multiple/>       
             </div>
           </div>
 
@@ -263,7 +239,7 @@ const AddProduct = () => {
             placeholder='Enter Number of Products in Stocks' />
           </div>
 
-          <button className='btn' onClick={addUserdata}>Add Product</button>
+          <button className='btn' onClick={addProductHandler}>Add Product</button>
         </form>
       </div>
     </section>

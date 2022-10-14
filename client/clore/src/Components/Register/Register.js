@@ -58,13 +58,10 @@ const Register = () => {
     console.log(res.status);
 
     if(res.status === 'ok'){
-<<<<<<< HEAD
       // alert("Account Successfully Registered ");
       
-=======
       alert("User Registered Successfully");
       window.location.href = '/Login'
->>>>>>> mahendra
       setFname("")
       setLname("")
       setPhone("")

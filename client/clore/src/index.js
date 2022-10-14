@@ -22,11 +22,8 @@ root.render(
       <Route path ="/Login" element={<Login></Login>} />
       <Route path ="/Account" element={<AccountPage></AccountPage>} />
       <Route path ="/Cart" element={<CartPage></CartPage>} />
-<<<<<<< HEAD
-=======
       <Route path ="/AddProduct" element={<AddProduct />} />
       <Route path ="/Shop" element={<ShopPage />} />
->>>>>>> mahendra
       <Route path="/Register" element={<Register></Register>}/>
       <Route path ="/Contact" element={<Contact></Contact>}/>
     </Routes>

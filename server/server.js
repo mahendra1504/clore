@@ -5,15 +5,12 @@ const mongoose = require("mongoose")
 const User = require('./models/user.models')
 const app = express();
 const bcrypt = require("bcryptjs")
-<<<<<<< Updated upstream
 const productdb = require('./models/product.models');
 const categorydb = require('./models/category.models');
 const subcategorydb = require('./models/sub_category.models');
 const branddb = require('./models/brand.models');
 const multer = require('multer')
 const fs = require('fs')
-=======
->>>>>>> Stashed changes
 app.use(cors());
 app.use(express.json())
 
@@ -24,9 +21,6 @@ mongoose.connect('mongodb://localhost:27017/clore')
 var storage = multer.diskStorage({
     destination : function (req, file, callback) {
         var dir = "./productImages";
-        if(!fs.existsSync(dir)){
-            fs.mkdirSync(dir);
-        }
         callback(null, dir);
     },
 
@@ -35,7 +29,7 @@ var storage = multer.diskStorage({
     }
 });
 
-var uploadImage = multer({storage : storage}).array('product_image',4);
+var uploadImage = multer({storage : storage}).array("images",4);
 
 app.post('/api/register', async (req, res) => {
     console.log(req.body);
@@ -84,8 +78,9 @@ app.post('/api/login', async (req, res) => {
     
 })
 
-app.post('/api/addproduct', async (req, res) => {
+app.post('/api/addproduct',uploadImage, async (req, res) => {
     console.log(req.body);
+    console.log(req.body.images);
     //const { product_name, category_id, sub_category_id, brand_id, price, small_desc, long_desc, image1, color, size, qty} = req.body
     try {
         const addProduct = await productdb.create({
